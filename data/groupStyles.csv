@@ -1,0 +1,12 @@
+Group,Color,Grayscale,Hatch,Line,Marker,Fill
+default,gray,gray,None,-,.,full
+irrad,red,black,,,,
+sham,blue,white,,,,none
+1,red,black,,,,
+2,blue,dark,,,X,none
+3,green,light,,,D,top
+4,gray,white,,,P,right
+irrad pre,red,black,//,--,X,
+irrad post,red,black,,,,
+sham pre,blue,white,//,--,X,
+sham post,blue,white,,,,

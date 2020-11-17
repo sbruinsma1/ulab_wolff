@@ -1,0 +1,5 @@
+mice 16,1-15
+irradiation on 2/15/17
+
+group Irrad: 1,2,3,6,8,10,13,14
+group Sham: 4,5,7,9,11,12,15,16

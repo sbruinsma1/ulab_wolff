@@ -1,0 +1,2 @@
+plotLims = [-7,5]
+removeIDs = ['YMaze1-04','YMaze1-05','YMaze1-06','YMaze1-09'] 

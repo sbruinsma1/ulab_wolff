@@ -1,0 +1,148 @@
+Basic python commands in terminal
+
+Terminal commands:
+- rm *group*  (removes all files containing 'group')
+- ls -a (shows all the hidden files)
+
+Vim commands: 
+- vim <code_name>
+- i (to start editing)
+- :q! (Quit without saving)
+- :wq (quit with saving)
+
+Conda install pip 
+- if pip isn't installed
+
+conda create -n transcriptomics
+- makes virtual env for a project
+
+pip install cookiecutter
+cookiecutter https://github.com/drivendata/cookiecutter-data-science
+- sets a template for a project (in a data science format)
+
+- setup.py folder contains info about src code
+
+Pip install -e .
+- installs src code as an editable package. Editable means that the code stays in the folder (rather than being sent to site-packages)
+- check setup.py for editable package name
+
+Import <editable package>
+- import the now editable package like you would any other package
+
+src.egg-info
+- contains metadata set out by setup.py
+
+Adding -h to any command (pip install -h) gives a full list of possible functionality 
+*** extremely important ***
+
+conda list -e > requirements.txt
+- exports all packages used in a virtual env to a requirements txt file
+
+pip freeze > requirements-learning.txt
+- exports all packages used in a virtual env to a requirements txt file
+
+conda list --explicit > spec-file.txt  
+- specific to condo
+
+conda install --name learning --file spec-file.txt
+- load in all the packages in a spec file
+
+Pipenv instead of conda activate
+- make a pipfile 
+- pipenv install to create pipfile.lock
+- source $(pipenv --venv)/bin/activate to activate the environment
+
+Pip install -r requirements.txt
+- load in all packages in a requirements file
+
+source activate <env name> # enter into a virtualenv
+Source deactivate # exit virtualenv
+
+ls /anaconda3/envs/
+- this is the directory where virtualenvs are saved
+
+Ls /anaconda3/envs/testproject/lib/python3.7/site-packages
+- this is the directory where the packages for the virtualenvs are saved
+
+pip install git+git://github.com/nipy/nipype
+- this is the command for installing a remote (or GitHub) folder 
+
+python -m ipykernel install --user --name transcriptomics
+(If this command doesn't work, try with python3)
+- this installs a particular virtualenv as a kernel to be used on Jupyter notebook
+
+jupyter kernelspec list
+- lists all of the kernels in Jupiter
+
+jupyter kernelspec uninstall mypython
+- uninstall a particular kernel 
+
+man -ls does the same as -h (to figure out functionality) but man is the earlier version
+
+conda install -n learning pip
+-- installs a package (i.e. pip) into a virtualenv (i.e. learning)
+
+mv src learning
+-- renames src folder as learning
+
+Nbextensions
+pip install jupyter_contrib_nbextensions 
+jupyter contrib nbextension install --user
+
+# run the following to download psychopy libraries -- run from psypy3 virtualenv
+conda create -n psypy3 python=3.6
+conda activate psypy3
+conda install numpy scipy matplotlib pandas pyopengl pillow lxml openpyxl xlrd configobj pyyaml gevent greenlet msgpack-python psutil pytables cffi seaborn wxpython cython pyzmq pyserial
+conda install -c conda-forge pyglet pysoundfile python-bidi moviepy pyosf
+pip install zmq json-tricks pyparallel sounddevice pygame pysoundcard psychopy_ext psychopy
+# requests[security] 
+
+-- install psychopy libraries and dependencies + download IDE to run code (rather than using standalone app)
+
+# git stuff
+git init # run this command in the dir that you want to gitify
+Git add .
+Git commit -m "first commit"
+On github.com/maedbhk - create a new repo. Then copy the quick setup link: https://github.com/maedbhk/cerebellum_learning.git
+git remote add origin https://github.com/maedbhk/cerebellum_learning.git
+
+Create .gitignore file in your new git folder
+git push -u origin master
+
+# running ipython in a virtualenv
+Pip install ipython # in your virutalenv
+Hash -r # run from bash shell and then run ipython again
+
+# VS Code - names for files tracked by git
+A - Added
+M - Modified
+D - Deleted
+U - Untracked
+C - Conflict
+R - Renamed
+
+VS code has to be started in a workspace in order for the autocomplete function to work
+Select a python interpreter -- one of your virtual environments
+Configure and run the debugger
+launch.json is the file where all of the debugging configs are stored
+
+
+Ipython: 
+%paste
+- if you want to paste code into ipython
+- this pastes whatever is in the clipboard into the ipython terminal
+
+%debug
+- sets debugging in motion in ipython
+
+-u to navigate between scripts in debugging (from lower to higher levels of the code)
+
+Using unix commands in python
+!file <filename>
+- figure out what kind of file it is
+
+!wc <filename> 
+- size of the filename3
+
+!head -n 10
+- data availability statement

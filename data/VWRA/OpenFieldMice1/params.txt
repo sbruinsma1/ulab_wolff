@@ -1,0 +1,8 @@
+mice 20-33
+irradiation on 10/11/16
+
+group Irrad: 20,21,24,29,31,33
+group Sham: 22,23,25,26,28,32
+
+# notes:
+# running wheels 27, 30 didn't work

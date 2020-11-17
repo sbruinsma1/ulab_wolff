@@ -1,0 +1,8 @@
+mice 16,1-15
+irradiation on 8/30/17
+
+group Irrad: 1,4,7,9,12,16
+group Sham: 2,3,5,8,10,11,13,14
+
+# notes:
+# bad data from 6, 15

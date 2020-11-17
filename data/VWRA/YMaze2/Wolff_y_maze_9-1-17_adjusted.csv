@@ -1,0 +1,36 @@
+,Activity Wheel Software from Lafayette Instrument Company.
+,Version 11.16.5338.19188
+,Experiment Setup:
+,Connected Hardware:
+,,USB Interface REV 1 [1-FTDH63QW]
+,,USB Interface REV 2 [2-FTV64L2L]
+,     Experiment Name: Wolff_Y_maze_8-15-17
+,     Experiment Length: 10 Days
+,     Download Interval(Active Cycle): 1 Minute
+,     Date Format: M/d/yyyy
+,     Time Format: H:mm:ss
+,     Start Time: 8/31/2017 14:22:14
+,     Stop Time: ~9/10/2017 14:22:14
+
+
+Interface/Port, 1-1, 2-1, 2-2, 2-3, 2-4, 2-5, 2-6, 2-7, 2-8, 2-9, 2-10, 2-11, 2-12, 2-13, 2-14, 2-15,
+Counter/Animal ID, 16, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15,
+Cage Type,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,Mouse,
+
+
+
+ 08/31/2017 14:14:45
+Interval Count,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,
+Average m/min.,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,-,
+Distance,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,
+Total Counts,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,0.00,
+
+
+ 14:15:40
+Interval Count,0.28,0.09,0.91,0.37,0.75,0.16,0.04,0.24,0.51,0.32,1.22,0.26,0.20,0.17,0.08,0.07,
+Average m/min.,0.12,0.04,0.40,0.17,0.33,0.07,0.02,0.10,0.23,0.14,0.54,0.12,0.09,0.08,0.03,0.03,
+Distance,0.11,0.04,0.36,0.15,0.30,0.06,0.02,0.09,0.21,0.13,0.49,0.11,0.08,0.07,0.03,0.03,
+Total Counts,0.28,0.09,0.91,0.37,0.75,0.16,0.04,0.24,0.51,0.32,1.22,0.26,0.20,0.17,0.08,0.07,
+
+
+,<User stopped experiment at 8/31/2017 2:23:10 PM>
