@@ -16,7 +16,7 @@ import phenotyperTests as phenotyper
 import bdnf as bdnf
 #from . 
 
-path = os.getcwd() + '/figures/'
+path = os.getcwd() + '/../figures/'
 dpi=300
 plt.close('all')
 
@@ -108,7 +108,7 @@ def fig4():
     figs[3].savefig(path+'S3C corr ofield proBDNF.tif',dpi=dpi)
     figs[4].savefig(path+'S3D corr vwra mBDNF.tif',dpi=dpi)
     figs[5].savefig(path+'S3E corr vwra proBDNF.tif',dpi=dpi)    
-
+ 
 def supp(): # circadian images
     figs = circadianImgs.circadianImgs('cogVWRA',plotDates=False,saveFigs=False,
                                    individualImgs=False,normPercent=95)

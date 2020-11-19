@@ -11,7 +11,7 @@ warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 
 
 def getMainPath():
-	return os.getcwd() + '/data/'
+	return os.getcwd() + '/../data/'
     #/Users/sbruinsma/Desktop/Other Projects/ULAB/ulab_group_code
 
 #%% defaults and path stuff
