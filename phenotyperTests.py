@@ -17,7 +17,7 @@ import matplotlib.dates as mdate
 pd.plotting.register_matplotlib_converters()
 
 def getPath():
-    return os.getcwd() + '/data/phenotyper/allCogWall/'
+    return os.getcwd() + '/../data/phenotyper/allCogWall/'
 	
 def getIrradDates(exptName):
     fileName = getPath() + 'irradDates.txt'

@@ -10,7 +10,7 @@ def getVWRACol(data):
     return [c for c in data.columns if 'time active' in c.lower()][0]
 
 def getData(normalize=False):
-    data = pd.read_csv(os.getcwd() + '/data/BDNF/BDNF totals.csv')
+    data = pd.read_csv(os.getcwd() + '/../data/BDNF/BDNF totals.csv')
     data['VWRA'] /= 180 # convert minutes to hours
     data.insert(5,'Ratio',data['Mature'] / data['Pro.'])
     data.drop(columns='Dimer',inplace=True)
