@@ -25,13 +25,13 @@ def dailify(data,measure,threshold=0):
 
     if measure == 'actTime':
         df = calcNumAboveThresh(df,threshold)
-    elif measure == 'speed':
+    elif measure == 'speed': #executes if "if block" conditional not true (moves through 1 by 1)
         df = calcSpeed(df,threshold)
     elif any([m in measure.lower() for m in ['pellet','poke','dist','act']]):
         df = calcSum(df) # cogwall or telemetry activity measures
     elif any([m in measure.lower() for m in ['heart','temp']]):
         df = calcMean(df) # other telemetry measures
-    else:
+    else: #if none of elif statements work
         assert False, 'Unknown measure: %s'%measure
 
     df = pd.concat((df,mf.getUniqueDates(data)),axis=1,join='inner')
@@ -72,39 +72,39 @@ def getDailyData(expt,exptType=None,measure=None,output='dfWide',asDecrease=Fals
 #  - days variable should be integers (days), a list of datetime.dates, or pd.DatetimeIndex
 #  - unteseted with days variable as strings, but could work
 def plotDailyData(data,plotParams,plotDates=False,figsize=[6.4,4.8],xLabel=None,yLabel=None,
-                  fontsize=16,colors=None,blackandwhite=False,legendLoc='lower left'): 
+                  fontsize=16,colors=None,blackandwhite=False,legendLoc='lower left'): #args to make malleable (not need to rewrite for each fig/exp)
             
     if plotDates: # import stuff for plotting dates
         import matplotlib.dates as mdate
-        pd.plotting.register_matplotlib_converters()
+        pd.plotting.register_matplotlib_converters() #import more outer functions (should do at top of file)
 
     def makeList(r): # make into a list whether or not it is iterable
-        try:
+        try: #to test or if some cases will print error
             rList = list(r)
-        except TypeError:
+        except TypeError: #if try block = error -> executed (crashes without)
             rList = [r]
-        return rList
+        return rList #what function outputs (depends on goals for ) 
     
     def setResetLog(resetDays,days): # for separating pre- and post-fatigue periods 
         if resetDays is None:
-            return [np.ones(len(days),dtype=bool)]
+            return [np.ones(len(days),dtype=bool)] #create list of 1s as long as days
         rDays = makeList(resetDays)
         resetLog = [np.array([d < rDays[0] for d in days])]
-        for rInd in range(len(rDays)-1):
+        for rInd in range(len(rDays)-1): #asks to execute this for all values in set (e.g. participant_ids = dataframe[colname].unique() -> for participant_id in participant_ids: )
             resetLog.append(np.array([d >= rDays[rInd] for d in days]) & \
                             np.array([d < rDays[rInd+1] for d in days]))
         resetLog.append(np.array([d >= rDays[-1] for d in days]))  
-        return np.row_stack(resetLog)    
+        return np.row_stack(resetLog)  
     resetLog = setResetLog(plotParams['resetDays'],mf.getDays(data))
 
-    # calculate statistics
-    groups = mf.getGroups(data)
+    # calculate statistics -- generates other arrays/columns/values from other spreadsheets
+    groups = mf.getGroups(data) #calls mainFunctions.py
     gNames = pf.groupNames(groups)
     gN = data.groupby(groups,axis=1).count()
     gMeans = data.groupby(groups,axis=1).mean()
-    if plotParams['errType'] == 'stdErr':
+    if plotParams['errType'] == 'stdErr': #executes if this is true
         gErr = data.groupby(groups,axis=1).sem()
-    elif plotParams['errType'] == 'CI':
+    elif plotParams['errType'] == 'CI': #executes if "if block" conditional not true (moves through 1 by 1)
         gErr = pf.calcConfInterval(data,alpha=0.95)
 
     # generate plots    
@@ -112,12 +112,12 @@ def plotDailyData(data,plotParams,plotDates=False,figsize=[6.4,4.8],xLabel=None,
         plotStyles = pf.getGroupPlotStyles(gNames)
         def setGroupLabel(gName,n):
             return '%s: n=%d'%(gName,n)
-        x = mf.getDates(gMeans) if plotDates else mf.getDays(gMeans)
+        x = mf.getDates(gMeans) if plotDates else mf.getDays(gMeans) #other way to write (recommend 1st)
         color = 'Grayscale' if blackandwhite else 'Color'
         for g in gNames:
             gLabel = setGroupLabel(g,gN[g].mode()[0])
             for rInd,rL in enumerate(resetLog):
-                ax.errorbar(x[rL],gMeans.loc[rL,g].values,yerr=gErr.loc[rL,g].values,
+                ax.errorbar(x[rL],gMeans.loc[rL,g].values,yerr=gErr.loc[rL,g].values, #actual code to create a figure 
                             color=plotStyles.loc[color,g],
                             linestyle=plotStyles.loc['Line',g],
                             marker=plotStyles.loc['Marker',g],
@@ -130,7 +130,7 @@ def plotDailyData(data,plotParams,plotDates=False,figsize=[6.4,4.8],xLabel=None,
     for spine in plt.gca().spines.values(): # outline figure window
         spine.set_color('k')
         spine.set_linewidth(0.5)
-    plotData(ax,gNames,gMeans,gN,gErr,resetLog,plotDates)
+    plotData(ax,gNames,gMeans,gN,gErr,resetLog,plotDates) #execute function above once set (consider order of func creation and utilization)
     
     # gray bars around irrad/chemo days
     def markResets(ax,resetDays,resetLen,plotDates,alpha=0.5): 
@@ -154,7 +154,7 @@ def plotDailyData(data,plotParams,plotDates=False,figsize=[6.4,4.8],xLabel=None,
         #ax.set_ylim(*ylim)
     markResets(ax,plotParams['resetDays'],plotParams['resetLen'],plotDates)
     
-    # pretty it up  
+    # pretty it up (mostly using set matplotlib funcs)
     
     ax.legend(loc=legendLoc)
     if yLabel is not None:
@@ -214,7 +214,7 @@ def combineData(dataPre,dataPost,plotPre,groupJoin=' '):
         groupsBoth = np.array([groupJoin.join([g,s]) for s in ['pre','post'] for g in mf.getGroups(dataPost)])
         return dataBoth,groupsBoth
 
-def standardPlots(expt=None,exptType=None,measure=None,
+def standardPlots(expt=None,exptType=None,measure=None, #imp for allFigures.py
                   data=None, # if data is None, will automatically load data for expt  
                   dailyFigsize=[6.4,4.8], plotDates=False, # for daily plot
                   swarmFigsize=[3,4.8],daysPost=6,plotPre=False,dotsize=7, # for boxplot
@@ -222,7 +222,7 @@ def standardPlots(expt=None,exptType=None,measure=None,
                   fontsize=14,asDecrease=False,blackandwhite=False,**kwargs): # for both plots
     assert expt is not None or data is not None, 'must define either expt or data'
     
-    # get default parameters and overwrite with any kwargs
+    # get default parameters and overwrite with any kwargs (i.e. optional arguments)
     exptType,measure = mf.getExptTypeAndMeasure(expt,exptType,measure)
     plotParams = mf.getPlotParams(expt,exptType,measure) 
     for key,val in kwargs.items():

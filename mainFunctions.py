@@ -9,14 +9,15 @@ import os
 import warnings
 warnings.simplefilter(action='ignore', category=pd.errors.PerformanceWarning)
 
+#not importing other files = a central file
 
 def getMainPath():
 	return os.getcwd() + '/../data/'
     #/Users/sbruinsma/Desktop/Other Projects/ULAB/ulab_group_code
 
-#%% defaults and path stuff
+#%% defaults and path stuff 
 exptTypeDirs = {'VWRA':'VWRA',
-                'cogWall':'phenotyper'}
+                'cogWall':'phenotyper'} #change names
 
 distMeasures = ['distance','activity','speed','actTime','actSum']
 

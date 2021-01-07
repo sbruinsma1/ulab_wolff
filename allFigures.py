@@ -5,10 +5,11 @@ Plots and saves all figures for PLOSOne Manuscript
 @author: wolffbs
 """
 
+# import general libraries/packages accessible in python (with functions so you don't have to write them yourself)
 import os
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt #change name so easier to call
 
-# functions in current directory
+# functions in current directory (e.g. other files within folder)
 import plotDaily
 import circadianImgs
 import arenaTests as arenas
@@ -16,10 +17,12 @@ import phenotyperTests as phenotyper
 import bdnf as bdnf
 #from . 
 
+#gives path for generated figures to go in directory (os = good package for this)
 path = os.getcwd() + '/../figures/'
 dpi=300
 plt.close('all')
 
+#sets sizing for figures (i.e. not have to specify each time run)
 dailyFigsize = (5,4)
 swarmFigsize = (2.5,4)
 corrFigsize = (4,4)
@@ -39,7 +42,7 @@ def fig2():
     
     # ymaze
     figs,fig2 = arenas.yMazePlots(fontsize=fontsize,figsize=swarmFigsize)
-    figs[0].savefig(path+'2C ymaze distance.tif',dpi=dpi)
+    figs[0].savefig(path+'2C ymaze distance.tif',dpi=dpi) #saving figure and exporting to intended path
     figs[1].savefig(path+'S1C ymaze arms.tif',dpi=dpi)
     figs[2].savefig(path+'2D ymaze perf.tif',dpi=dpi)
     fig2.savefig(path+'S1D ymaze time.tif',dpi=dpi)
